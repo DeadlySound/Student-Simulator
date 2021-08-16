@@ -1,6 +1,6 @@
 -- Lewandowski Adam 
 -- 14.08.2021
--- Topic: Student-Simulator
+-- Temat: Obs³uga sieci wyci¹gów narciarskich
 
 USE master
 GO
@@ -113,7 +113,7 @@ CREATE TABLE Subject_Assignment
 ID int IDENTITY(1,1) NOT NULL PRIMARY KEY,
 Employee_ID int NOT NULL FOREIGN KEY REFERENCES Employee(ID),
 Subject_ID int NOT NULL FOREIGN KEY REFERENCES [Subject](ID),
-Academic_Year nvarchar(10) NOT NULL
+Academic_Year nvarchar(7) NOT NULL
 )
 GO
 
