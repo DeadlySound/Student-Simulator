@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,9 @@ namespace Student_Simulator
     
     public partial class MainWindow : Form
     {
-        private DatabaseManager DBManager = new DatabaseManager();
+        private SqlConnection _connection = DatabaseManager.MakeDatabaseConnection();
+        private Lazy<NewGameWindow> _newGame = new Lazy<NewGameWindow>(() => new NewGameWindow());
+
         public MainWindow()
         {
             InitializeComponent();
@@ -26,7 +29,9 @@ namespace Student_Simulator
 
         private void NewGame_btn_Click(object sender, EventArgs e)
         {
-            ToggleMenuVisibility();
+            //ToggleMenuVisibility();
+            _newGame.Value.Clear();
+            _newGame.Value.ShowDialog();
         }
 
         private void ToggleMenuVisibility()
@@ -36,8 +41,10 @@ namespace Student_Simulator
 
         private void DBC_Click(object sender, EventArgs e)
         {
-            using var connection = DBManager.OpenDatabaseConnection();
-            DBManager.CloseDatabaseConnection(connection);
+
+            DatabaseManager.OpenDatabaseConnection(_connection);
+
+            DatabaseManager.CloseDatabaseConnection(_connection);
         }
 
     }

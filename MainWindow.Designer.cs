@@ -89,13 +89,14 @@ namespace Student_Simulator
             this.Quit_btn.UseVisualStyleBackColor = true;
             this.Quit_btn.Click += new System.EventHandler(this.Quit_btn_Click);
             // 
-            // Form1
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 603);
             this.Controls.Add(this.MenuPanel);
-            this.Name = "Form1";
+            this.Name = "MainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Simulator";
             this.MenuPanel.ResumeLayout(false);
             this.ResumeLayout(false);
