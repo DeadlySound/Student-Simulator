@@ -77,8 +77,7 @@ GO
 BULK INSERT Subject_Assignment
     FROM 'E:\Pendrive\Notatki\02. Wyk³ady\IV Semestr\PIV\Symulator Studenta\Student-Simulator\Student-Simulator\ServerDocumentation\TestDataSubjectAssignment.csv'
 WITH ( 
-    FORMAT='CSV',
-	FIRSTROW = 1);
+    FORMAT='CSV');
 GO
 
 --SELECT * FROM Subject_Assignment

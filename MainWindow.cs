@@ -11,15 +11,17 @@ using System.Windows.Forms;
 
 namespace Student_Simulator
 {
-    
+
     public partial class MainWindow : Form
     {
         private SqlConnection _connection = DatabaseManager.MakeDatabaseConnection();
-        private Lazy<NewGameWindow> _newGame = new Lazy<NewGameWindow>(() => new NewGameWindow());
+        private Lazy<NewGameWindow> _newGame;
+        private Student _player;
 
         public MainWindow()
         {
             InitializeComponent();
+            _newGame = new Lazy<NewGameWindow>(() => new NewGameWindow(this));
         }
 
         private void Quit_btn_Click(object sender, EventArgs e)
@@ -29,7 +31,7 @@ namespace Student_Simulator
 
         private void NewGame_btn_Click(object sender, EventArgs e)
         {
-            //ToggleMenuVisibility();
+            ToggleMenuVisibility();
             _newGame.Value.Clear();
             _newGame.Value.ShowDialog();
         }
@@ -47,5 +49,9 @@ namespace Student_Simulator
             DatabaseManager.CloseDatabaseConnection(_connection);
         }
 
+        public void CreateStudent(int id, string nickname, string fieldOfStudy)
+        {
+            _player = new Student(id, nickname, fieldOfStudy);
+        }
     }
 }

@@ -99,7 +99,7 @@ CREATE TABLE Employee
 ID int IDENTITY(1,1) NOT NULL PRIMARY KEY,
 First_Name nvarchar(32) NOT NULL,
 Last_Name nvarchar(32) NOT NULL,
-Character_ID int NOT NULL,											
+Character_ID int NOT NULL FOREIGN KEY REFERENCES [Character](ID),											
 Department_ID int NOT NULL FOREIGN KEY REFERENCES Department(ID)
 )
 GO
@@ -113,7 +113,7 @@ CREATE TABLE Subject_Assignment
 ID int IDENTITY(1,1) NOT NULL PRIMARY KEY,
 Employee_ID int NOT NULL FOREIGN KEY REFERENCES Employee(ID),
 Subject_ID int NOT NULL FOREIGN KEY REFERENCES [Subject](ID),
-Academic_Year nvarchar(7) NOT NULL
+Academic_Year nvarchar(9) NOT NULL
 )
 GO
 
@@ -138,5 +138,5 @@ GO
 ALTER TABLE dbo.Grades
 	DROP CONSTRAINT IF EXISTS check_grade
 ALTER TABLE dbo.Grades
-   ADD CONSTRAINT check_grade CHECK (Grade IN (NULL, 2, 3, 3.5, 4, 4.5 ,5) ) ;
+   ADD CONSTRAINT check_grade CHECK (Grade BETWEEN 2 AND 5 ) ;
 GO

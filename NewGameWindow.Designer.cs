@@ -33,8 +33,10 @@ namespace Student_Simulator
             this.NicknameInput_textBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Start_button = new System.Windows.Forms.Button();
-            this.NoEmptyNickname_ErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.NoEmptyNickname_ErrorProvider)).BeginInit();
+            this.Textbox_ErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Select_label = new System.Windows.Forms.Label();
+            this.FieldOfStudy_checkbox = new System.Windows.Forms.RadioButton();
+            ((System.ComponentModel.ISupportInitialize)(this.Textbox_ErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // NicknameInput_textBox
@@ -55,7 +57,7 @@ namespace Student_Simulator
             // 
             // Start_button
             // 
-            this.Start_button.Location = new System.Drawing.Point(129, 64);
+            this.Start_button.Location = new System.Drawing.Point(134, 121);
             this.Start_button.Name = "Start_button";
             this.Start_button.Size = new System.Drawing.Size(75, 23);
             this.Start_button.TabIndex = 2;
@@ -63,16 +65,39 @@ namespace Student_Simulator
             this.Start_button.UseVisualStyleBackColor = true;
             this.Start_button.Click += new System.EventHandler(this.Start_button_Click);
             // 
-            // NoEmptyNickname_ErrorProvider
+            // Textbox_ErrorProvider
             // 
-            this.NoEmptyNickname_ErrorProvider.ContainerControl = this;
+            this.Textbox_ErrorProvider.ContainerControl = this;
+            // 
+            // Select_label
+            // 
+            this.Select_label.AutoSize = true;
+            this.Select_label.Location = new System.Drawing.Point(118, 69);
+            this.Select_label.Name = "Select_label";
+            this.Select_label.Size = new System.Drawing.Size(115, 15);
+            this.Select_label.TabIndex = 5;
+            this.Select_label.Text = "Select Field of study:";
+            // 
+            // FieldOfStudy_checkbox
+            // 
+            this.FieldOfStudy_checkbox.AutoSize = true;
+            this.FieldOfStudy_checkbox.Checked = true;
+            this.FieldOfStudy_checkbox.Location = new System.Drawing.Point(111, 96);
+            this.FieldOfStudy_checkbox.Name = "FieldOfStudy_checkbox";
+            this.FieldOfStudy_checkbox.Size = new System.Drawing.Size(122, 19);
+            this.FieldOfStudy_checkbox.TabIndex = 4;
+            this.FieldOfStudy_checkbox.TabStop = true;
+            this.FieldOfStudy_checkbox.Text = "Computer Science";
+            this.FieldOfStudy_checkbox.UseVisualStyleBackColor = true;
             // 
             // NewGameWindow
             // 
             this.AcceptButton = this.Start_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(345, 99);
+            this.ClientSize = new System.Drawing.Size(345, 150);
+            this.Controls.Add(this.Select_label);
+            this.Controls.Add(this.FieldOfStudy_checkbox);
             this.Controls.Add(this.Start_button);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NicknameInput_textBox);
@@ -82,7 +107,7 @@ namespace Student_Simulator
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.NewGameWindow_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.NoEmptyNickname_ErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Textbox_ErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -93,6 +118,8 @@ namespace Student_Simulator
         private System.Windows.Forms.TextBox NicknameInput_textBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Start_button;
-        private System.Windows.Forms.ErrorProvider NoEmptyNickname_ErrorProvider;
+        private System.Windows.Forms.ErrorProvider Textbox_ErrorProvider;
+        private System.Windows.Forms.Label Select_label;
+        private System.Windows.Forms.RadioButton FieldOfStudy_checkbox;
     }
 }
