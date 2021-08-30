@@ -14,7 +14,7 @@ namespace Student_Simulator
         private string _nickname;
         private string _fieldOfStudy;
         public int CurrentTerm { get; set; }
-        Dictionary<string, int> Skillset; // Dictionary<SkillID,SkillLevel>
+        Dictionary<string, int> Skillset; // Dictionary<NameOfSkill,SkillLevel>
 
         private int _mentalHealth;
         public int MentalHealth
@@ -33,7 +33,7 @@ namespace Student_Simulator
 
         #region Constructors
 
-        public Student(int id, string nickname, string fieldOfStudy)
+        public Student(int id, string nickname, string fieldOfStudy, Dictionary<string, int> skillset)
         {
             _id = id;
             _nickname = nickname;
@@ -41,6 +41,7 @@ namespace Student_Simulator
             MentalHealth = 100;
             PhysicalHealth = 100;
             CurrentTerm = 1;
+            Skillset = skillset;
         }
 
         #endregion

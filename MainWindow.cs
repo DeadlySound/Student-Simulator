@@ -51,7 +51,18 @@ namespace Student_Simulator
 
         public void CreateStudent(int id, string nickname, string fieldOfStudy)
         {
-            _player = new Student(id, nickname, fieldOfStudy);
+            var skillset = CreateSkillsetForTerm(1, fieldOfStudy);
+            _player = new Student(id, nickname, fieldOfStudy, skillset);
+        }
+
+        Dictionary<string, int> CreateSkillsetForTerm(int term, string fieldOfStudy)
+        {
+            var tempListOfSubjects = DatabaseManager.RetrieveListOfSubjectsForTerm(term, fieldOfStudy);
+            var skillset = new Dictionary<string, int>();
+            foreach (var subject in tempListOfSubjects)
+            {
+                skillset.Add(subject, 0);
+            }
         }
     }
 }

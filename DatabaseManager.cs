@@ -53,7 +53,7 @@ namespace Student_Simulator
             return StudentId;
         }
 
-        public static List<string> RetrieveListOfSubjectsForSemester(int term, string fieldOfStudy)
+        public static List<string> RetrieveListOfSubjectsForTerm(int term, string fieldOfStudy)
         {
             SqlConnection connection = DatabaseManager.MakeDatabaseConnection();
             connection.Open();
