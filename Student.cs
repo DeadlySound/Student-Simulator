@@ -19,14 +19,14 @@ namespace Student_Simulator
         private int _mentalHealth;
         public int MentalHealth
         {
-            get => MentalHealth;
+            get => _mentalHealth;
             set => _mentalHealth = Math.Max(Math.Min(100, value), 0);
         }
 
         private int _physicalHealth;
         public int PhysicalHealth
         {
-            get => PhysicalHealth;
+            get => _physicalHealth;
             set => _physicalHealth = Math.Max(Math.Min(100, value), 0);
         }
         #endregion

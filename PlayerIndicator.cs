@@ -39,5 +39,10 @@ namespace Student_Simulator
         {
             InitializeComponent();
         }
+
+        private void EndTurn_button_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

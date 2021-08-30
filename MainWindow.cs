@@ -16,12 +16,14 @@ namespace Student_Simulator
     {
         private SqlConnection _connection = DatabaseManager.MakeDatabaseConnection();
         private Lazy<NewGameWindow> _newGame;
+        public GameManager GameManager;
         private Student _player;
 
         public MainWindow()
         {
             InitializeComponent();
             _newGame = new Lazy<NewGameWindow>(() => new NewGameWindow(this));
+            GameManager = new GameManager(this);
         }
 
         private void Quit_btn_Click(object sender, EventArgs e)
@@ -36,7 +38,7 @@ namespace Student_Simulator
             _newGame.Value.ShowDialog();
         }
 
-        private void ToggleMenuVisibility()
+        public void ToggleMenuVisibility()
         {
             MenuPanel.Visible = !MenuPanel.Visible;
         }
@@ -63,8 +65,15 @@ namespace Student_Simulator
             {
                 skillset.Add(subject, 0);
             }
-
             return skillset;
+        }
+
+        public void SetPlayerIndicators(int time)
+        {
+            PlayerIndicator_UserControl.MentalHealth = _player.MentalHealth;
+            PlayerIndicator_UserControl.PhysicalHealth = _player.PhysicalHealth;
+            PlayerIndicator_UserControl.Time = time;
+
         }
     }
 }

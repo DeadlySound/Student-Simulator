@@ -14,6 +14,7 @@ namespace Student_Simulator
     public partial class NewGameWindow : Form
     {
         private MainWindow MainWindowReferrence;
+        private bool _isClosingForNewGame;
         public NewGameWindow()
         {
             InitializeComponent();
@@ -23,11 +24,6 @@ namespace Student_Simulator
             InitializeComponent();
             MainWindowReferrence = mwReferrence;
             //TODO get a list of fields of study from database and make radiobuttons out of them to choose
-
-        }
-
-        private void NewGameWindow_Load(object sender, EventArgs e)
-        {
 
         }
 
@@ -42,6 +38,8 @@ namespace Student_Simulator
             DatabaseManager.AddStudentToDatabase(NicknameInput_textBox.Text);
             int studentId = DatabaseManager.RetrieveLastStudentId();
             MainWindowReferrence.CreateStudent(studentId, NicknameInput_textBox.Text, FieldOfStudy_checkbox.Text);
+            MainWindowReferrence.GameManager.StartGame();
+            _isClosingForNewGame = true;
             Close();
         }
 
@@ -60,6 +58,14 @@ namespace Student_Simulator
             }
 
             return true;
+        }
+
+        void OnClosing(object sender, EventArgs e)
+        {
+            if (!_isClosingForNewGame)
+            {
+                MainWindowReferrence.ToggleMenuVisibility();
+            }
         }
     }
 }

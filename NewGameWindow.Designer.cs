@@ -31,7 +31,7 @@ namespace Student_Simulator
         {
             this.components = new System.ComponentModel.Container();
             this.NicknameInput_textBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.EnterNickname_label = new System.Windows.Forms.Label();
             this.Start_button = new System.Windows.Forms.Button();
             this.Textbox_ErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.Select_label = new System.Windows.Forms.Label();
@@ -46,14 +46,14 @@ namespace Student_Simulator
             this.NicknameInput_textBox.Size = new System.Drawing.Size(279, 23);
             this.NicknameInput_textBox.TabIndex = 0;
             // 
-            // label1
+            // EnterNickname_label
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(108, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Enter your nickname";
+            this.EnterNickname_label.AutoSize = true;
+            this.EnterNickname_label.Location = new System.Drawing.Point(108, 15);
+            this.EnterNickname_label.Name = "EnterNickname_label";
+            this.EnterNickname_label.Size = new System.Drawing.Size(116, 15);
+            this.EnterNickname_label.TabIndex = 1;
+            this.EnterNickname_label.Text = "Enter your nickname";
             // 
             // Start_button
             // 
@@ -99,24 +99,23 @@ namespace Student_Simulator
             this.Controls.Add(this.Select_label);
             this.Controls.Add(this.FieldOfStudy_checkbox);
             this.Controls.Add(this.Start_button);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.EnterNickname_label);
             this.Controls.Add(this.NicknameInput_textBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "NewGameWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.NewGameWindow_Load);
+            this.Text = "New Game";
+            this.FormClosing += OnClosing;
             ((System.ComponentModel.ISupportInitialize)(this.Textbox_ErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
 
         private System.Windows.Forms.TextBox NicknameInput_textBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label EnterNickname_label;
         private System.Windows.Forms.Button Start_button;
         private System.Windows.Forms.ErrorProvider Textbox_ErrorProvider;
         private System.Windows.Forms.Label Select_label;
