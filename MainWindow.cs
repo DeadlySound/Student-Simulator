@@ -63,6 +63,8 @@ namespace Student_Simulator
             {
                 skillset.Add(subject, 0);
             }
+
+            return skillset;
         }
     }
 }
