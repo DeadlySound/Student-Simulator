@@ -32,7 +32,7 @@ namespace Student_Simulator
         {
             set
             {
-                Time_ProgressBar.Value = value;
+                Time_ProgressBar.Value = Math.Min(24, Math.Max(0, value));
             }
         }
         public PlayerIndicator()
@@ -40,9 +40,5 @@ namespace Student_Simulator
             InitializeComponent();
         }
 
-        private void EndTurn_button_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

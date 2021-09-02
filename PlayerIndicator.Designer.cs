@@ -35,7 +35,6 @@ namespace Student_Simulator
             this.PhysicalHealth_label = new System.Windows.Forms.Label();
             this.MentalHealth_label = new System.Windows.Forms.Label();
             this.Time_label = new System.Windows.Forms.Label();
-            this.EndTurn_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PhysicalHealth_ProgressBar
@@ -55,6 +54,7 @@ namespace Student_Simulator
             // Time_ProgressBar
             // 
             this.Time_ProgressBar.Location = new System.Drawing.Point(342, 23);
+            this.Time_ProgressBar.Maximum = 24;
             this.Time_ProgressBar.Name = "Time_ProgressBar";
             this.Time_ProgressBar.Size = new System.Drawing.Size(131, 13);
             this.Time_ProgressBar.TabIndex = 2;
@@ -86,21 +86,10 @@ namespace Student_Simulator
             this.Time_label.TabIndex = 5;
             this.Time_label.Text = "Time";
             // 
-            // EndTurn_button
-            // 
-            this.EndTurn_button.Location = new System.Drawing.Point(479, 5);
-            this.EndTurn_button.Name = "EndTurn_button";
-            this.EndTurn_button.Size = new System.Drawing.Size(75, 37);
-            this.EndTurn_button.TabIndex = 7;
-            this.EndTurn_button.Text = "End Turn";
-            this.EndTurn_button.UseVisualStyleBackColor = true;
-            this.EndTurn_button.Click += new System.EventHandler(this.EndTurn_button_Click);
-            // 
             // PlayerIndicator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.EndTurn_button);
             this.Controls.Add(this.Time_label);
             this.Controls.Add(this.MentalHealth_label);
             this.Controls.Add(this.PhysicalHealth_label);
@@ -108,7 +97,7 @@ namespace Student_Simulator
             this.Controls.Add(this.MentalHealth_ProgressBar);
             this.Controls.Add(this.PhysicalHealth_ProgressBar);
             this.Name = "PlayerIndicator";
-            this.Size = new System.Drawing.Size(564, 45);
+            this.Size = new System.Drawing.Size(483, 45);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,6 +111,5 @@ namespace Student_Simulator
         private System.Windows.Forms.Label PhysicalHealth_label;
         private System.Windows.Forms.Label MentalHealth_label;
         private System.Windows.Forms.Label Time_label;
-        private System.Windows.Forms.Button EndTurn_button;
     }
 }

@@ -38,7 +38,7 @@ namespace Student_Simulator
             DatabaseManager.AddStudentToDatabase(NicknameInput_textBox.Text);
             int studentId = DatabaseManager.RetrieveLastStudentId();
             MainWindowReferrence.CreateStudent(studentId, NicknameInput_textBox.Text, FieldOfStudy_checkbox.Text);
-            MainWindowReferrence.GameManager.StartGame();
+            MainWindowReferrence.GameManager.StartGame(1, FieldOfStudy_checkbox.Text);
             _isClosingForNewGame = true;
             Close();
         }
@@ -56,7 +56,6 @@ namespace Student_Simulator
                 Textbox_ErrorProvider.SetError(NicknameInput_textBox, "Your nickname can't be longer than 32 characters");
                 return false;
             }
-
             return true;
         }
 

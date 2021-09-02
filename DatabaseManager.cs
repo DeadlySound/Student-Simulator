@@ -9,23 +9,11 @@ namespace Student_Simulator
 {
     public class DatabaseManager
     {
-
         #region Database operations
         public static SqlConnection MakeDatabaseConnection()
         {
             return new SqlConnection("Server=.;Database=Student_Simulator;Integrated Security=True;");
         }
-        // obsolete - remove when done testing
-        public static void OpenDatabaseConnection(SqlConnection connection)
-        {
-            connection.Open();
-        }
-        // obsolete - remove when done testing
-        public static void CloseDatabaseConnection(SqlConnection connection)
-        {
-            connection.Close();
-        }
-
         public static void AddStudentToDatabase(string nickname)
         {
             SqlConnection connection = DatabaseManager.MakeDatabaseConnection();
@@ -43,7 +31,6 @@ namespace Student_Simulator
             var getStudentIdCommand = new SqlCommand("SELECT TOP(1) ID FROM Student ORDER BY ID DESC", connection);
             var reader = getStudentIdCommand
                 .ExecuteReader();
-
             int StudentId = 0; // this value will be overwritten, but needs to be assigned in order to work
             if (reader.Read())
             {

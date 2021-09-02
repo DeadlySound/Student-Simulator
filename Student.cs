@@ -14,7 +14,8 @@ namespace Student_Simulator
         private string _nickname;
         private string _fieldOfStudy;
         public int CurrentTerm { get; set; }
-        Dictionary<string, int> Skillset; // Dictionary<NameOfSkill,SkillLevel>
+        public Dictionary<string, int> Skillset { get; set; } // Dictionary<NameOfSkill,SkillLevel>
+
 
         private int _mentalHealth;
         public int MentalHealth
