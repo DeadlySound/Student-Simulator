@@ -14,31 +14,29 @@ namespace Student_Simulator
     {
         public int PhysicalHealth
         {
-            set
-            {
-                PhysicalHealth_ProgressBar.Value = value;
-            }
+            get => PhysicalHealth_ProgressBar.Value;
+            set => PhysicalHealth_ProgressBar.Value = value;
         }
 
         public int MentalHealth
         {
-            set
-            {
-                MentalHealth_ProgressBar.Value = value;
-            }
+            get => MentalHealth_ProgressBar.Value;
+            set => MentalHealth_ProgressBar.Value = value;
         }
 
         public int Time
         {
-            set
-            {
-                Time_ProgressBar.Value = Math.Min(24, Math.Max(0, value));
-            }
+            get => Time_ProgressBar.Value;
+            set => Time_ProgressBar.Value = Math.Min(24, Math.Max(0, value));
         }
         public PlayerIndicator()
         {
             InitializeComponent();
         }
 
+        private void PlayerIndicator_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

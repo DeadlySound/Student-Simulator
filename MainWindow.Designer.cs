@@ -51,6 +51,7 @@ namespace Student_Simulator
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.WeeklySchedule_label = new System.Windows.Forms.Label();
+            this.CurrentTurn_label = new System.Windows.Forms.Label();
             this.MenuPanel.SuspendLayout();
             this.Game_panel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -127,6 +128,7 @@ namespace Student_Simulator
             this.Game_panel.Controls.Add(this.Menu_btn);
             this.Game_panel.Controls.Add(this.panel1);
             this.Game_panel.Controls.Add(this.panel2);
+            this.Game_panel.Controls.Add(this.CurrentTurn_label);
             this.Game_panel.Location = new System.Drawing.Point(0, 0);
             this.Game_panel.Name = "Game_panel";
             this.Game_panel.Size = new System.Drawing.Size(998, 603);
@@ -151,6 +153,7 @@ namespace Student_Simulator
             this.GoSocialise_btn.TabIndex = 3;
             this.GoSocialise_btn.Text = "Go out with friends";
             this.GoSocialise_btn.UseVisualStyleBackColor = true;
+            this.GoSocialise_btn.Click += new System.EventHandler(this.GoSocialise_btn_Click);
             // 
             // StudyAtHome_btn
             // 
@@ -170,6 +173,7 @@ namespace Student_Simulator
             this.GoToUni_btn.TabIndex = 1;
             this.GoToUni_btn.Text = "Go to university";
             this.GoToUni_btn.UseVisualStyleBackColor = true;
+            this.GoToUni_btn.Click += new System.EventHandler(this.GoToUni_btn_Click);
             // 
             // EndTurn_btn
             // 
@@ -187,9 +191,12 @@ namespace Student_Simulator
             // 
             this.PlayerIndicator_UserControl.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.PlayerIndicator_UserControl.Location = new System.Drawing.Point(215, 519);
+            this.PlayerIndicator_UserControl.MentalHealth = 0;
             this.PlayerIndicator_UserControl.Name = "PlayerIndicator_UserControl";
+            this.PlayerIndicator_UserControl.PhysicalHealth = 0;
             this.PlayerIndicator_UserControl.Size = new System.Drawing.Size(480, 45);
             this.PlayerIndicator_UserControl.TabIndex = 5;
+            this.PlayerIndicator_UserControl.Time = 0;
             // 
             // Menu_btn
             // 
@@ -270,6 +277,14 @@ namespace Student_Simulator
             this.WeeklySchedule_label.Size = new System.Drawing.Size(170, 450);
             this.WeeklySchedule_label.TabIndex = 0;
             // 
+            // CurrentTurn_label
+            // 
+            this.CurrentTurn_label.Location = new System.Drawing.Point(392, 79);
+            this.CurrentTurn_label.Name = "CurrentTurn_label";
+            this.CurrentTurn_label.Size = new System.Drawing.Size(214, 40);
+            this.CurrentTurn_label.TabIndex = 11;
+            this.CurrentTurn_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -311,6 +326,7 @@ namespace Student_Simulator
         private Panel panel2;
         private Label WeeklySchedule_label;
         private Label label1;
+        private Label CurrentTurn_label;
     }
 }
 

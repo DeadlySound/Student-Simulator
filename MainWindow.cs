@@ -85,6 +85,16 @@ namespace Student_Simulator
             PlayerIndicator_UserControl.Time = indicatorsTuple.Time;
         }
 
+        public void AdjustPlayerIndicators((int PH, int MH, int Time) indicatorsTuple)
+        {
+            _player.MentalHealth += indicatorsTuple.MH;
+            _player.PhysicalHealth += indicatorsTuple.PH;
+
+            PlayerIndicator_UserControl.MentalHealth = _player.MentalHealth;
+            PlayerIndicator_UserControl.PhysicalHealth = _player.PhysicalHealth;
+            PlayerIndicator_UserControl.Time += indicatorsTuple.Time;
+        }
+
         private void Menu_btn_Click(object sender, EventArgs e)
         {
             ToggleMenuVisibility();
@@ -92,7 +102,8 @@ namespace Student_Simulator
 
         private void EndTurn_btn_Click(object sender, EventArgs e)
         {
-            GameManager.NextTurn(new (_player.MentalHealth+5, _player.PhysicalHealth, 100));
+            GameManager.NextTurn(new (5, 5, 24));
+            ResetActionButtons();
         }
 
         public void InsertSubjectsInListbox()
@@ -110,9 +121,57 @@ namespace Student_Simulator
             SkillsetLevel_listbox.EndUpdate();
         }
 
+        public void UpdateSkillsetLevels()
+        {
+            SkillsetLevel_listbox.BeginUpdate();
+            SkillsetLevel_listbox.Items.Clear();
+            foreach (var skill in _player.Skillset)
+            {
+                SkillsetLevel_listbox.Items.Add(skill.Value);
+            }
+            SkillsetLevel_listbox.EndUpdate();
+        }
+
         public void WriteWeeklyScheduleOnScreen()
         {
             WeeklySchedule_label.Text = GameManager.Schedule.ToString();
+        }
+
+        public void WriteCurrentTurnOnScreen(string currentTurn)
+        {
+            CurrentTurn_label.Text = currentTurn;
+        }
+
+        private void GoToUni_btn_Click(object sender, EventArgs e)
+        {
+            var todaysClasses = GameManager.Schedule.WeekdaysAndSubjects[GameManager.CurrentTurn.DayOfWeek];
+            if (todaysClasses.Count == 0)
+            {
+                MessageBox.Show("There are no classes today");
+            }
+            else
+            {
+                foreach (var subject in todaysClasses)
+                {
+                    _player.Skillset[subject] += 2;
+                }
+                UpdateSkillsetLevels();
+                MessageBox.Show("You successfully get out of the house and manage to sit through the classes");
+                var timeWasted = -1 * todaysClasses.Count * 2 + 2;
+                AdjustPlayerIndicators((-10, 0, timeWasted));
+            }
+            GoToUni_btn.Enabled = false;
+        }
+
+        void ResetActionButtons()
+        {
+            GoToUni_btn.Enabled = true;
+        }
+
+        private void GoSocialise_btn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You go out with your friends. Your physical health takes a hit since you got drunk again.");
+            AdjustPlayerIndicators((5, -10, -5));
         }
     }
 }

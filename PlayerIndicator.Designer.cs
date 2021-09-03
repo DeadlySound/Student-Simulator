@@ -98,6 +98,7 @@ namespace Student_Simulator
             this.Controls.Add(this.PhysicalHealth_ProgressBar);
             this.Name = "PlayerIndicator";
             this.Size = new System.Drawing.Size(483, 45);
+            this.Load += new System.EventHandler(this.PlayerIndicator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
