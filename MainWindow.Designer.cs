@@ -69,9 +69,9 @@ namespace Student_Simulator
             this.MenuPanel.Controls.Add(this.Continue_btn);
             this.MenuPanel.Controls.Add(this.NewGame_btn);
             this.MenuPanel.Controls.Add(this.Quit_btn);
-            this.MenuPanel.Location = new System.Drawing.Point(3, 3);
+            this.MenuPanel.Location = new System.Drawing.Point(0, 0);
             this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(998, 606);
+            this.MenuPanel.Size = new System.Drawing.Size(998, 603);
             this.MenuPanel.TabIndex = 0;
             // 
             // Continue_btn
@@ -79,7 +79,7 @@ namespace Student_Simulator
             this.Continue_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Continue_btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Continue_btn.Enabled = false;
-            this.Continue_btn.Location = new System.Drawing.Point(410, 156);
+            this.Continue_btn.Location = new System.Drawing.Point(410, 153);
             this.Continue_btn.Name = "Continue_btn";
             this.Continue_btn.Size = new System.Drawing.Size(181, 46);
             this.Continue_btn.TabIndex = 2;
@@ -91,7 +91,7 @@ namespace Student_Simulator
             // 
             this.NewGame_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.NewGame_btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.NewGame_btn.Location = new System.Drawing.Point(410, 262);
+            this.NewGame_btn.Location = new System.Drawing.Point(410, 259);
             this.NewGame_btn.Name = "NewGame_btn";
             this.NewGame_btn.Size = new System.Drawing.Size(181, 46);
             this.NewGame_btn.TabIndex = 1;
@@ -103,7 +103,7 @@ namespace Student_Simulator
             // 
             this.Quit_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Quit_btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Quit_btn.Location = new System.Drawing.Point(410, 464);
+            this.Quit_btn.Location = new System.Drawing.Point(410, 461);
             this.Quit_btn.Name = "Quit_btn";
             this.Quit_btn.Size = new System.Drawing.Size(181, 46);
             this.Quit_btn.TabIndex = 0;
@@ -143,6 +143,7 @@ namespace Student_Simulator
             this.WorkOut_btn.TabIndex = 4;
             this.WorkOut_btn.Text = "Exercise";
             this.WorkOut_btn.UseVisualStyleBackColor = true;
+            this.WorkOut_btn.Click += new System.EventHandler(this.WorkOut_btn_Click);
             // 
             // GoSocialise_btn
             // 
@@ -164,6 +165,7 @@ namespace Student_Simulator
             this.StudyAtHome_btn.TabIndex = 2;
             this.StudyAtHome_btn.Text = "Study at home";
             this.StudyAtHome_btn.UseVisualStyleBackColor = true;
+            this.StudyAtHome_btn.Click += new System.EventHandler(this.StudyAtHome_btn_Click);
             // 
             // GoToUni_btn
             // 
@@ -292,7 +294,6 @@ namespace Student_Simulator
             this.ClientSize = new System.Drawing.Size(998, 603);
             this.Controls.Add(this.Game_panel);
             this.Name = "MainWindow";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Simulator";
             this.MenuPanel.ResumeLayout(false);

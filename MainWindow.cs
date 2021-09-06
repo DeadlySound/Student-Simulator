@@ -14,11 +14,12 @@ namespace Student_Simulator
 
     public partial class MainWindow : Form
     {
-        public bool IsGameActive { 
+        public bool IsGameActive
+        {
             get => Continue_btn.Enabled;
             set => Continue_btn.Enabled = value;
         }
-        private SqlConnection _connection = DatabaseManager.MakeDatabaseConnection();
+        //private Lazy<>
         private Lazy<NewGameWindow> _newGame;
         public GameManager GameManager;
         private Student _player;
@@ -50,7 +51,7 @@ namespace Student_Simulator
         {
             MenuPanel.Visible = !MenuPanel.Visible;
         }
-        
+
         public void CreateStudent(int id, string nickname, string fieldOfStudy)
         {
             var skillset = CreateSkillsetForTerm(1, fieldOfStudy);
@@ -74,18 +75,15 @@ namespace Student_Simulator
             PlayerIndicator_UserControl.PhysicalHealth = _player.PhysicalHealth;
             PlayerIndicator_UserControl.Time = time;
         }
-        public void SetPlayerIndicators((int PH, int MH, int Time) indicatorsTuple)
+        private bool IsPossibleToAdjust((int MH, int PH, int Time) indicatorsTuple)
         {
-            // player property setters already have filters for values
-            _player.MentalHealth = indicatorsTuple.MH;
-            _player.PhysicalHealth = indicatorsTuple.PH;
-
-            PlayerIndicator_UserControl.MentalHealth = _player.MentalHealth;
-            PlayerIndicator_UserControl.PhysicalHealth = _player.PhysicalHealth;
-            PlayerIndicator_UserControl.Time = indicatorsTuple.Time;
+            if (PlayerIndicator_UserControl.MentalHealth + indicatorsTuple.MH < 0) { return false; }
+            if (PlayerIndicator_UserControl.PhysicalHealth + indicatorsTuple.PH < 0) { return false; }
+            if (PlayerIndicator_UserControl.Time + indicatorsTuple.Time < 0) { return false; }
+            return true;
         }
 
-        public void AdjustPlayerIndicators((int PH, int MH, int Time) indicatorsTuple)
+        public void AdjustPlayerIndicators((int MH, int PH, int Time) indicatorsTuple)
         {
             _player.MentalHealth += indicatorsTuple.MH;
             _player.PhysicalHealth += indicatorsTuple.PH;
@@ -102,7 +100,7 @@ namespace Student_Simulator
 
         private void EndTurn_btn_Click(object sender, EventArgs e)
         {
-            GameManager.NextTurn(new (5, 5, 24));
+            GameManager.NextTurn(new(5, 5, 24));
             ResetActionButtons();
         }
 
@@ -145,6 +143,13 @@ namespace Student_Simulator
         private void GoToUni_btn_Click(object sender, EventArgs e)
         {
             var todaysClasses = GameManager.Schedule.WeekdaysAndSubjects[GameManager.CurrentTurn.DayOfWeek];
+            var timeWasted = -1 * todaysClasses.Count * 2 + 2;
+            var potentialAdjustment = (-10, 0, timeWasted);
+            if (!IsPossibleToAdjust(potentialAdjustment))
+            {
+                MessageBox.Show("You don't have enough Time / Mental Health / Physical Health to do that.");
+                return;
+            }
             if (todaysClasses.Count == 0)
             {
                 MessageBox.Show("There are no classes today");
@@ -157,8 +162,8 @@ namespace Student_Simulator
                 }
                 UpdateSkillsetLevels();
                 MessageBox.Show("You successfully get out of the house and manage to sit through the classes");
-                var timeWasted = -1 * todaysClasses.Count * 2 + 2;
-                AdjustPlayerIndicators((-10, 0, timeWasted));
+
+                AdjustPlayerIndicators(potentialAdjustment);
             }
             GoToUni_btn.Enabled = false;
         }
@@ -170,8 +175,50 @@ namespace Student_Simulator
 
         private void GoSocialise_btn_Click(object sender, EventArgs e)
         {
+            var potentialAdjustment = (5, -10, -5);
+            if (!IsPossibleToAdjust(potentialAdjustment))
+            {
+                MessageBox.Show("You don't have enough Time / Mental Health / Physical Health to do that.");
+                return;
+            }
+            AdjustPlayerIndicators(potentialAdjustment);
             MessageBox.Show("You go out with your friends. Your physical health takes a hit since you got drunk again.");
-            AdjustPlayerIndicators((5, -10, -5));
+
+        }
+
+        private void WorkOut_btn_Click(object sender, EventArgs e)
+        {
+            var potentialAdjustment = (-5, -5, -4);
+            if (!IsPossibleToAdjust(potentialAdjustment))
+            {
+                MessageBox.Show("You don't have enough Time / Mental Health / Physical Health to do that.");
+                return;
+            }
+            AdjustPlayerIndicators((0, 10, -4));
+            MessageBox.Show("You go out and exercise.");
+
+        }
+
+        private void StudyAtHome_btn_Click(object sender, EventArgs e)
+        {
+            var potentialAdjustment = (-5, -5, -4);
+            if (!IsPossibleToAdjust(potentialAdjustment))
+            {
+                MessageBox.Show("You don't have enough Time / Mental Health / Physical Health to do that.");
+                return;
+            }
+            if (SkillsetName_listbox.SelectedItem is null)
+            {
+                MessageBox.Show("You need to select a subject you want to study");
+                return;
+            }
+            AdjustPlayerIndicators(potentialAdjustment);
+            string subjectToStudy = SkillsetName_listbox.SelectedItem.ToString();
+            string message = $"{subjectToStudy} level has increased. You suffer from prolonged sitting and lack of human contact.";
+            MessageBox.Show(message);
+
+            _player.Skillset[SkillsetName_listbox.SelectedItem.ToString()] += 2;
+            UpdateSkillsetLevels();
         }
     }
 }

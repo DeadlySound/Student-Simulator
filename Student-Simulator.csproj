@@ -5,6 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>Student_Simulator</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>StudentSimulatorIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
