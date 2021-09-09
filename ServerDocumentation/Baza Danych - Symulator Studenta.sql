@@ -12,7 +12,7 @@ CREATE DATABASE Student_Simulator
 ON
 (
 	NAME = Student_Simulator,
-	FILENAME = 'E:\Pendrive\Notatki\02. Wyk³ady\IV Semestr\PIV\Symulator Studenta\Student-Simulator\Student-Simulator\ServerDocumentation\Student_Simulator.mdf',
+	FILENAME = 'D:\Pendrive\Notatki\02. Wyk³ady\IV Semestr\PIV\Symulator Studenta\Student-Simulator\Student-Simulator\ServerDocumentation\Student_Simulator.mdf',
 	SIZE = 10,
 	MAXSIZE = 50,
 	FILEGROWTH = 5
@@ -20,7 +20,7 @@ ON
 LOG ON
 (
 	NAME = Student_Simulator_log,
-	FILENAME = 'E:\Pendrive\Notatki\02. Wyk³ady\IV Semestr\PIV\Symulator Studenta\Student-Simulator\Student-Simulator\ServerDocumentation\Symulator_Studenta_log.ldf',
+	FILENAME = 'D:\Pendrive\Notatki\02. Wyk³ady\IV Semestr\PIV\Symulator Studenta\Student-Simulator\Student-Simulator\ServerDocumentation\Symulator_Studenta_log.ldf',
 	SIZE = 5MB,
 	MAXSIZE = 25MB,
 	FILEGROWTH = 5MB
