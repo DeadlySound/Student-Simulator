@@ -18,7 +18,7 @@
     refs:
     - "refs/heads/main"
   fail_on_prepare_env_warning: true
-    actions:
+  actions:
   - action: "ls"
     type: "BUILD"
     docker_image_name: "library/ubuntu"
