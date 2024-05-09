@@ -1,9 +1,3 @@
-- pipeline: "test yaml config"
-  events:
-  - type: "PUSH"
-    refs:
-    - "refs/heads/main"
-  fail_on_prepare_env_warning: true
 - pipeline: "test unmapped pusher email with storing config in git repo"
   events:
   - type: "PUSH"
@@ -18,3 +12,10 @@
     execute_commands:
     - "ls"
     shell: "BASH"
+- pipeline: "test yaml config"
+  events:
+  - type: "PUSH"
+    refs:
+    - "refs/heads/main"
+  fail_on_prepare_env_warning: true
+  
