@@ -12,7 +12,7 @@
     execute_commands:
     - "ls"
     shell: "BASH"
-- pipeline: "test yaml configuration"
+- pipeline: "test config"
   events:
   - type: "PUSH"
     refs:
