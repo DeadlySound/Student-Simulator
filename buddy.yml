@@ -12,17 +12,19 @@
     execute_commands:
     - "ls"
     shell: "BASH"
-- pipeline: "test config"
+- pipeline: "test for properly yaml pull_requestActions"
   events:
-  - type: "PUSH"
+  - type: "PULL_REQUEST"
     refs:
-    - "refs/heads/main"
+    - "master"
+    - "releases"
+  execution_message_template: "test"
+  always_from_scratch: true
+  ignore_fail_on_project_status: true
+  no_skip_to_most_recent: true
+  auto_clear_cache: true
   fail_on_prepare_env_warning: true
-  actions:
-  - action: "ls"
-    type: "BUILD"
-    docker_image_name: "library/ubuntu"
-    docker_image_tag: "20.04"
-    execute_commands:
-    - "ls"
-    shell: "BASH"
+  concurrent_pipeline_runs: true
+  do_not_create_commit_status: true
+  change_set_base: "LATEST_RUN_MATCHING_REF"
+
