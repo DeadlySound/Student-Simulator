@@ -16,8 +16,7 @@
   events:
   - type: "PULL_REQUEST"
     refs:
-    - "master"
-    - "releases"
+    - "*"
   execution_message_template: "test"
   always_from_scratch: true
   ignore_fail_on_project_status: true
