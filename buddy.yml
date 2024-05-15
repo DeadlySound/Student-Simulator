@@ -7,7 +7,7 @@
   always_from_scratch: true
   ignore_fail_on_project_status: true
   no_skip_to_most_recent: true
-  auto_clear_cache: true
+  auto_clear_cache: false
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
   do_not_create_commit_status: true
