@@ -3,7 +3,7 @@
   - type: "PULL_REQUEST"
     refs:
     - "*"
-    base_branch_refs: 
+    pull_request_base_branch_refs: 
     - "*"
   execution_message_template: "test"
   always_from_scratch: true
