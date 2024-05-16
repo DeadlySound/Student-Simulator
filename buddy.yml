@@ -3,7 +3,8 @@
   - type: "PULL_REQUEST"
     refs:
     - "*"
-    base_branch_refs: "*"
+    base_branch_refs: 
+    - "*"
   execution_message_template: "test"
   always_from_scratch: true
   ignore_fail_on_project_status: true
