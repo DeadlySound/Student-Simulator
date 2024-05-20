@@ -11,7 +11,7 @@
   no_skip_to_most_recent: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
-  concurrent_pipeline_runs: false
+  concurrent_pipeline_runs: true
   do_not_create_commit_status: true
   change_set_base: "LATEST_RUN_MATCHING_REF"
   actions:
