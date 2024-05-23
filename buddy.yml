@@ -3,6 +3,9 @@
   - type: "PULL_REQUEST"
     refs:
     - "*"
+    types:
+    - "opened"
+    - "milestoned"
     branches:
     - "*"
   execution_message_template: "test"
