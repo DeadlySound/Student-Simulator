@@ -1,12 +1,7 @@
 - pipeline: "test unmapped pusher email with storing config in git repo"
   events:
-  - type: "PULL_REQUEST"
+  - type: "PUSH"
     refs:
-    - "*"
-    types:
-    - "opened"
-    - "milestoned"
-    branches:
     - "*"
   execution_message_template: "test"
   always_from_scratch: true
