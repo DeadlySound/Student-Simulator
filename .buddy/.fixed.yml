@@ -1,8 +1,8 @@
-- pipeline: "Pipeline"
+- pipeline: "pull"
   events:
   - type: "PUSH"
     refs:
-    - "refs/heads/main"
+    - "(^((?!(main)$).)*$)"
   fail_on_prepare_env_warning: true
   actions:
   - action: "ls"
